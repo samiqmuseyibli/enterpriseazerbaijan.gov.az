@@ -1,0 +1,62 @@
+.ms-tabs-template {
+	max-width: 100%;
+	margin: 0 auto;
+	background: #181818;
+	border-bottom: 1px solid #2f2f2f;
+}
+
+.ms-tabs-vertical-template {
+	max-width: 1065px;
+}
+
+.ms-tabs-template .ms-thumb-frame img {
+	float: left;
+	width: auto;
+	margin-left: 30px;
+}
+.ms-tabs-template .ms-thumb-frame h6 {
+	color: #fff;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 21px;
+	text-transform: uppercase;
+	margin: 25px 0px 0px 0px;
+	font-family: 'Righteous', sans-serif;
+}
+
+.ms-tabs-template .ms-thumb-frame h6 em {
+	font-weight: 300;
+	font-size: 14px;
+	color: #999;
+	font-style: normal;
+	display: block;
+}
+
+
+.ms-tabs-template .ms-thumb-frame p {
+	font-size:10pt;
+	margin: 4px 0;
+}
+
+.ms-tabs-template .ms-thumb-frame-selected h3{
+	color:#4b8aac;
+}
+
+ /* Layers */
+.ms-layer.video-title {
+    color: white;
+    font-weight: 600;
+    font-size: 42px;
+    margin:0px;
+    letter-spacing:0px;
+}
+
+.ms-layer.video-title.video-top-title {
+    font-size: 16px;
+    color: gray;
+}
+
+.ms-layer.video-title.video-sub-title {
+    font-size: 22px;
+    font-weight: 300;
+}

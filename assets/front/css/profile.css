@@ -1,0 +1,162 @@
+.remove_it_v {
+	line-height:19px;
+}.delete-div-wrap .close {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 100;
+    background-color: #E92003;
+    padding: 6px 6px 4px;
+    color: #fff;
+    font-weight: 300;
+    cursor: pointer;
+    opacity: 50%;
+    text-align: center;
+    font-size: 12px;
+    line-height: 10px;
+    border-radius: 50%;
+}.delete-div-wrap {
+    position: relative;
+    display: inline-block;
+    border: 2px #EAEAEA solid;
+    font-size: 0;
+    border-radius: 4px;
+    margin: 10px;
+    transition: all .6s ease-in-out;
+}.delete-div-wrap .close {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 100;
+    background-color: #E92003;
+    padding: 6px 6px 4px;
+    color: #fff;
+    font-weight: 300;
+    cursor: pointer;
+    opacity: 50%;
+    text-align: center;
+    font-size: 12px;
+    line-height: 10px;
+    border-radius: 50%;
+}.delete-div-wrap .close-cover {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 100;
+    background-color: #E92003;
+    padding: 6px 6px 4px;
+    color: #fff;
+    font-weight: 300;
+    cursor: pointer;
+    opacity: 50%;
+    text-align: center;
+    font-size: 12px;
+    line-height: 10px;
+    border-radius: 50%;
+}
+
+
+}.delete-div-wrapmod .close {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 100;
+    background-color: #E92003;
+    padding: 6px 6px 4px;
+    color: #fff;
+    font-weight: 300;
+    cursor: pointer;
+    opacity: 50%;
+    text-align: center;
+    font-size: 12px;
+    line-height: 10px;
+    border-radius: 50%;
+}.delete-div-wrapmod {
+    position: relative;
+    display: inline-block;
+    border: 2px #EAEAEA solid;
+    font-size: 0;
+    border-radius: 4px;
+    margin: 10px;
+    transition: all .6s ease-in-out;
+}.delete-div-wrapmod .close {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 100;
+    background-color: #E92003;
+    padding: 6px 6px 4px;
+    color: #fff;
+    font-weight: 300;
+    cursor: pointer;
+    opacity: 50%;
+    text-align: center;
+    font-size: 12px;
+    line-height: 10px;
+    border-radius: 50%;
+}.delete-div-wrapmod .close-cover {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 100;
+    background-color: #E92003;
+    padding: 6px 6px 4px;
+    color: #fff;
+    font-weight: 300;
+    cursor: pointer;
+    opacity: 50%;
+    text-align: center;
+    font-size: 12px;
+    line-height: 10px;
+    border-radius: 50%;
+}
+
+
+.close {
+    text-shadow: none;
+    opacity: unset !important;
+    position: relative;
+    float: right;
+    font-size: 16px !important;
+    padding-top: 3px !important;
+    font-weight: 700 !important;
+}
+.close-cover {
+    text-shadow: none;
+    opacity: unset !important;
+    position: relative;
+    float: right;
+    font-size: 16px !important;
+    padding-top: 3px !important;
+    font-weight: 700 !important;
+}.inner-div {
+    position: relative;
+    padding: 20px;
+}.btn{
+    cursor:pointer;
+}
+.btn-purple {
+    background-color: #8f60b6;
+    border-color: #8c5bb3;
+    color: #fff;
+}
+.btn-mint {
+    background-color: #18af92;
+    border-color: #17a98d;
+    color: #fff;
+}
+.btn_close{
+    outline: none !important;
+    cursor: pointer;
+}
+.label-danger{
+    color:red;
+}
+.right_{
+    float:right;
+}
+.tab-bane{
+    opacity: 1;
+}
+.pL-15 {padding-left:15px;}
+.pR-15 {padding-right:15px;}
