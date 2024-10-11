@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-$config['base_url'] = 'https://enterpriseazerbaijan.gov.az';
+$config['base_url'] = env('APP_URL');
 
 /*
 |--------------------------------------------------------------------------
@@ -153,7 +153,7 @@ $config['subclass_prefix'] = 'MY_';
 | Note: This will NOT disable or override the CodeIgniter-specific
 |	autoloading (application/config/autoload.php)
 */
-$config['composer_autoload'] = FALSE;
+$config['composer_autoload'] = FCPATH. 'vendor'. DIRECTORY_SEPARATOR . 'autoload.php';
 
 /*
 |--------------------------------------------------------------------------
