@@ -2,4 +2,4 @@
 system/
 cache/
 ci_sessions/
-application/config/
+/application/config/
