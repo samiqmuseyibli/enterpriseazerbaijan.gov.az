@@ -54,10 +54,10 @@ class Admin extends CI_Controller
 		$this->form_validation->set_rules('login', 	   'Login',     'trim|required|exact_length[5]|in_list[admin]');
         $this->form_validation->set_rules('password',  'Password',  'trim|required');
         $this->form_validation->set_rules('captchaCode',  'Captcha',  'trim|required');
-		
+
 		if ($this->form_validation->run() == FALSE) {
 			$this->session->set_flashdata(
-				'login_invalid', 
+				'login_invalid',
 				'<div class="alert alert-danger text-center alert-dismissible">
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 					<h4><i class="icon fa fa-ban"></i> Xəta!</h4>
@@ -67,14 +67,14 @@ class Admin extends CI_Controller
 			redirect('admin');
 
         } else {
-			
+
 			$login = html_escape($this->input->post('login'));
 			$password = html_escape($this->input->post('password'));
-			
+
 			 if (!$this->captcha_model->check($this->input->post('captchaCode'))) {
 
 				$this->session->set_flashdata(
-					'login_invalid', 
+					'login_invalid',
 					'<div class="alert alert-danger text-center alert-dismissible">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 						<h4><i class="icon fa fa-ban"></i> Xəta!</h4>
@@ -84,22 +84,20 @@ class Admin extends CI_Controller
 				redirect('admin');
 
             }else{
-				
 				$this->admin_model->add_admin_logins($login, sha1($password));
 				$control = $this->admin_model->control($login, $password);
-				
 				if ($control) {
-					
+
 					$this->session->set_userdata('admin_user_id', $control['id']);
 					$this->session->set_userdata('last_login', $control['last_login']);
 					$this->session->set_userdata('last_ip', $control['last_ip']);
 					$data = array('last_login' => date('d-m-Y H:i:s'), 'last_ip' => $this->input->ip_address());
 					$this->admin_model->lastlogin($control['id'], $data);
 					redirect('admin/home');
-					
+
 				} else {
 					$this->session->set_flashdata(
-						'login_invalid', 
+						'login_invalid',
 						'<div class="alert alert-danger text-center alert-dismissible">
 							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 							<h4><i class="icon fa fa-ban"></i> Xəta!</h4>
@@ -108,9 +106,9 @@ class Admin extends CI_Controller
 					);
 					redirect('admin');
 				}
-			
+
 			}
-			
+
 		}
     }else{
         echo 'error';
@@ -131,14 +129,14 @@ class Admin extends CI_Controller
 
 
         $this->form_validation->set_rules('old_password',  ' old Password',  'trim|required');
-        $this->form_validation->set_rules('password_1',  ' new Password',  'trim|required');  
-        $this->form_validation->set_rules('password_2',  'conf Password',  'trim|required');   
+        $this->form_validation->set_rules('password_1',  ' new Password',  'trim|required');
+        $this->form_validation->set_rules('password_2',  'conf Password',  'trim|required');
          if ($this->form_validation->run() == FALSE) {
            $this->session->set_flashdata('update_datatable', '<div class="alert alert-danger text-center alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                 <h4><i class="icon fa fa-check"></i> Xəta!</h4>
                Bütün Xanalar doldurulmalıdır! </div>');
-            redirect('admin/update_password');  
+            redirect('admin/update_password');
          }else{
         $old_password = sha1(md5(html_escape($this->input->post('old_password'))));
         $password_1 = html_escape($this->input->post('password_1'));
@@ -186,7 +184,7 @@ class Admin extends CI_Controller
             $config['base_url']   = base_url() . 'admin/users';
             $config['total_rows'] = $this->db->count_all_results('users');
             $data['users']       = $this->db->order_by('id', 'desc')->get('users', $config['per_page'], $page)->result_array();
-            
+
             $config['use_page_numbers']  = true;
             $config["page_query_string"] = true;
             $config['full_tag_open']     = '<ul class="pagination mg-b-0 page-0 ">';
@@ -262,7 +260,7 @@ class Admin extends CI_Controller
             if ($images){
                foreach ($images as $image) {
                 $url='./' . $image['files_url'];
-                unlink($url); 
+                unlink($url);
             }
             }
             $this->db->where('files_type_id', $project_id);
@@ -272,7 +270,7 @@ class Admin extends CI_Controller
             $this->db->where('project_id', $project_id);
             $this->db->delete('projects');
 
-            
+
             redirect('admin/projects');
         }
         redirect('admin/projects');
@@ -301,11 +299,11 @@ class Admin extends CI_Controller
         if ($token && $token!='' && checkToken($token)) {
           $id = html_escape($this->input->post('id'));
           $status = ($this->input->post('status') == 'true') ? 1 : 2;
-          $this->db->where('id', $id)->update('users', array('user_status' => $status)); 
+          $this->db->where('id', $id)->update('users', array('user_status' => $status));
         }else{
             echo "error";
         }
-        
+
     }
 
     public function geoprojectsset()
@@ -467,7 +465,7 @@ class Admin extends CI_Controller
             $config['base_url']   = base_url() . 'admin/edit_location';
             $config['total_rows'] = $this->db->count_all_results('geomap');
             $data['all']       = $this->db->order_by('geo_id','desc')->get('geomap', $config['per_page'], $page)->result_array();
-            
+
             $config['use_page_numbers']  = true;
             $config["page_query_string"] = true;
             $config['full_tag_open']     = '<ul class="pagination mg-b-0 page-0 ">';
@@ -558,7 +556,7 @@ class Admin extends CI_Controller
     }
 
     public function delete_location($para = '')
-    {  
+    {
         $para=html_escape($para);
         $this->safety('/delete_location');
         $token=html_escape($this->input->get('token'));
@@ -854,7 +852,7 @@ class Admin extends CI_Controller
             $config['base_url']   = base_url() . 'admin/get_subcribers';
             $config['total_rows'] = $this->db->count_all_results('subcribers');
             $data['details']       = $this->db->order_by('id','desc')->get('subcribers', $config['per_page'], $page)->result_array();
-            
+
             $config['use_page_numbers']  = true;
             $config["page_query_string"] = true;
             $config['full_tag_open']     = '<ul class="pagination mg-b-0 page-0 ">';
@@ -997,7 +995,7 @@ class Admin extends CI_Controller
         if ($token && $token!='' && checkToken($token)) {
         $image = $this->admin_model->get_partner($id);
         $fileurl = './assets/front/images/' . $image['url_image'];
-        unlink($fileurl);  
+        unlink($fileurl);
         $this->admin_model->delete_partner($id);
         $this->session->set_flashdata('update_datatable', '<div class="alert alert-success text-center alert-dismissible">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -1052,7 +1050,7 @@ class Admin extends CI_Controller
             'update_time' => date('Y-m-d H:i:s'),
         );
         $fileurl = './assets/front/images/' . $this->input->post('image_url');
-        unlink($fileurl);  
+        unlink($fileurl);
         $id = html_escape($this->input->post('id'));
         $this->admin_model->update_partner($id, $data);
         $this->session->set_flashdata('update_datatable', '<div class="alert alert-success text-center alert-dismissible">
@@ -1248,7 +1246,7 @@ class Admin extends CI_Controller
             $config['base_url']   = base_url() . 'admin/news';
             $config['total_rows'] = $this->db->count_all_results('news');
             $data['details']       = $this->db->order_by('id', 'desc')->get('news', $config['per_page'], $page)->result_array();
-            
+
             $config['use_page_numbers']  = true;
             $config["page_query_string"] = true;
             $config['full_tag_open']     = '<ul class="pagination mg-b-0 page-0 ">';
@@ -1298,7 +1296,7 @@ class Admin extends CI_Controller
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                         <h4><i class="icon fa fa-ban"></i> Xəta!</h4>
                         Səkil yükləndiyi zaman xəta baş verdi </div>');
-            redirect('admin/news'); 
+            redirect('admin/news');
           }
         else
         {
@@ -1307,7 +1305,7 @@ class Admin extends CI_Controller
                     'image_library'   => 'gd2',
                     'source_image'    =>  $image_data['full_path'],
                     'maintain_ratio'  =>  TRUE,
-                    'quality'         => '95%', 
+                    'quality'         => '95%',
                     'width'           =>  688,
                     'height'          =>  459,
             );
@@ -1327,11 +1325,11 @@ class Admin extends CI_Controller
                          Əlavə olunma tarixi düzgün formatda qeyd edilməyib. </div>');
                       redirect('admin/news');
                    }
-                   
+
                 } else {
                    $add_date_ = date("Y-m-d H:i:s");
                 }
-       
+
 
         $data = array(
             'title_az' => html_escape($this->input->post('title_az')),
@@ -1378,7 +1376,7 @@ class Admin extends CI_Controller
         if ($token && $token!='' && checkToken($token)) {
         $image = $this->admin_model->get_news_id($id);
         $fileurl = './assets/front/images/news/' . $image['url_image'];
-        unlink($fileurl);  
+        unlink($fileurl);
         $this->admin_model->delete_news($id);
         $this->session->set_flashdata('update_datatable', '<div class="alert alert-success text-center alert-dismissible">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -1420,18 +1418,18 @@ class Admin extends CI_Controller
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                         <h4><i class="icon fa fa-ban"></i> Xəta!</h4>
                         Səkil yükləndiyi zaman xəta baş verdi </div>');
-            redirect('admin/news'); 
+            redirect('admin/news');
           }
         else
         {
             $fileurl = './assets/front/images/news/' . $this->input->post('image_url');
-            unlink($fileurl);  
+            unlink($fileurl);
             $image_data =   $this->upload->data();
             $configer =  array(
                     'image_library'   => 'gd2',
                     'source_image'    =>  $image_data['full_path'],
                     'maintain_ratio'  =>  TRUE,
-                    'quality'         => '95%', 
+                    'quality'         => '95%',
                     'width'           =>  688,
                     'height'          =>  459,
             );
@@ -1439,7 +1437,7 @@ class Admin extends CI_Controller
             $this->image_lib->initialize($configer);
             $this->image_lib->resize();
       }
-       
+
         }
         $add_date      = html_escape($this->input->post('add_date'));
                 if (!empty($add_date)) {
@@ -1452,7 +1450,7 @@ class Admin extends CI_Controller
                          Əlavə olunma tarixi düzgün formatda qeyd edilməyib. </div>');
                       redirect('admin/news');
                    }
-                   
+
                 } else {
                    $add_date_ = date("Y-m-d H:i:s");
                 }
@@ -1496,7 +1494,7 @@ class Admin extends CI_Controller
             $config['base_url']   = base_url() . 'admin/documents';
             $config['total_rows'] = $this->db->count_all_results('documents');
             $data['details']       = $this->db->join('document_categories','documents.doc_category = document_categories.dc_id')->order_by('doc_sort', 'desc')->get('documents', $config['per_page'], $page)->result_array();
-            
+
             $config['use_page_numbers']  = true;
             $config["page_query_string"] = true;
             $config['full_tag_open']     = '<ul class="pagination mg-b-0 page-0 ">';
@@ -1536,7 +1534,7 @@ class Admin extends CI_Controller
         $token=html_escape($this->input->post('token'));
         if ($token && $token!='' && checkToken($token)) {
 
-       
+
 
         $data = array(
             'doc_title_az' => html_escape($this->input->post('title_az')),
@@ -1556,7 +1554,7 @@ class Admin extends CI_Controller
                         <h4><i class="icon fa fa-check"></i> Əlavə Edildi!</h4>
                         Məlumat uğurla əlavə olundu. </div>');
         redirect('admin/documents');
-        
+
 
        }else{
         echo "error";
@@ -1630,7 +1628,7 @@ class Admin extends CI_Controller
                         Məlumat uğurla yeniləndi. </div>');
             redirect('admin/documents');
         }
-        
+
     }else{
         echo "error";
     }
@@ -1649,7 +1647,7 @@ class Admin extends CI_Controller
             $config['base_url']   = base_url() . 'admin/messages';
             $config['total_rows'] = $this->db->count_all_results('messages');
             $data['details']       = $this->db->order_by('id','desc')->get('messages', $config['per_page'], $page)->result_array();
-            
+
             $config['use_page_numbers']  = true;
             $config["page_query_string"] = true;
             $config['full_tag_open']     = '<ul class="pagination mg-b-0 page-0 ">';
@@ -1714,7 +1712,7 @@ class Admin extends CI_Controller
             $config['base_url']   = base_url() . 'admin/site_translation';
             $config['total_rows'] = $this->db->count_all_results('site_language');
             $data['details']       = $this->db->order_by('word_id', 'desc')->get('site_language', $config['per_page'], $page)->result_array();
-            
+
             $config['use_page_numbers']  = true;
             $config["page_query_string"] = true;
             $config['full_tag_open']     = '<ul class="pagination mg-b-0 page-0 ">';
@@ -1868,7 +1866,7 @@ class Admin extends CI_Controller
             $config['base_url']   = base_url() . 'admin/uploadedfiles';
             $config['total_rows'] = $this->db->count_all_results('news');
             $data['details']       = $this->db->order_by('id', 'desc')->get('uploads', $config['per_page'], $page)->result_array();
-            
+
             $config['use_page_numbers']  = true;
             $config["page_query_string"] = true;
             $config['full_tag_open']     = '<ul class="pagination mg-b-0 page-0 ">';
@@ -1908,9 +1906,9 @@ class Admin extends CI_Controller
          $token=html_escape($this->input->get('token'));
         if ($token && $token!='' && checkToken($token)) {
         $file = $this->admin_model->get_uploaded_file($id);
-        
+
         $fileurl = './assets/front/images/uploads/' . $file['file_url'];
-        unlink($fileurl);  
+        unlink($fileurl);
         $this->admin_model->delete_file($id);
         $this->session->set_flashdata('update_datatable', '<div class="alert alert-success text-center alert-dismissible">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -1932,7 +1930,7 @@ class Admin extends CI_Controller
         $config['allowed_types'] = 'jpeg|jpg|png|pdf|zip|doc|docx|xls|xlsx';
         $config['max_size'] = 10000000;
         $config['file_name'] = $new_file_name;
-		
+
         $this->load->library('upload', $config);
         if (!$this->upload->do_upload('file')) {
             $this->session->set_flashdata('update_datatable', '<div class="alert alert-danger text-center alert-dismissible">
@@ -1947,7 +1945,7 @@ class Admin extends CI_Controller
             'date' => date('d-m-Y H:i'),
         );
         $this->admin_model->uploadfiles($data);
-		
+
         $this->session->set_flashdata('update_datatable', '<div class="alert alert-success text-center alert-dismissible">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                         <h4><i class="icon fa fa-check"></i> Əlavə Edildi!</h4>
@@ -1957,7 +1955,7 @@ class Admin extends CI_Controller
         echo "error";
     }
     }
-	
+
 	// ######## - Xəbərlər üçün şəkillərin əlavə olunması - ########
 	public function upload_news_image($id = '')
     {
@@ -1967,7 +1965,7 @@ class Admin extends CI_Controller
 		$data['details'] = $this->admin_model->get_uploaded_file_news($id);
         $this->load->view('back/news/add_images/home', $data);
     }
-	
+
 	public function uploading_news_image()
     {
 		$this->safety('/uploading_news_image');
@@ -1986,7 +1984,7 @@ class Admin extends CI_Controller
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                         <h4><i class="icon fa fa-ban"></i> Xəta!</h4>
                         Səkil yükləndiyi zaman xəta baş verdi </div>');
-            redirect('admin/news'); 
+            redirect('admin/news');
           }
         else
         {
@@ -1995,7 +1993,7 @@ class Admin extends CI_Controller
                     'image_library'   => 'gd2',
                     'source_image'    =>  $image_data['full_path'],
                     'maintain_ratio'  =>  TRUE,
-                    'quality'         => '95%', 
+                    'quality'         => '95%',
                     'width'           =>  688,
                     'height'          =>  459,
             );
@@ -2013,9 +2011,9 @@ class Admin extends CI_Controller
   }else{
     echo "error";
   }
-		
+
     }
-	
+
 	public function delete_news_image($id = '')
     {
         $id=html_escape($id);
@@ -2049,7 +2047,7 @@ class Admin extends CI_Controller
             $config['base_url']   = base_url() . 'admin/companies';
             $config['total_rows'] = $this->db->count_all_results('companies');
             $data['details']       = $this->db->order_by('id', 'desc')->get('companies', $config['per_page'], $page)->result_array();
-            
+
             $config['use_page_numbers']  = true;
             $config["page_query_string"] = true;
             $config['full_tag_open']     = '<ul class="pagination mg-b-0 page-0 ">';
@@ -2371,7 +2369,7 @@ class Admin extends CI_Controller
             $config['base_url']   = base_url() . 'admin/video';
             $config['total_rows'] = $this->db->count_all_results('video');
             $data['rows']       = $this->db->order_by('v_id', 'desc')->get('video', $config['per_page'], $page)->result_array();
-            
+
             $config['use_page_numbers']  = true;
             $config["page_query_string"] = true;
             $config['full_tag_open']     = '<ul class="pagination mg-b-0 page-0 ">';
@@ -2417,7 +2415,7 @@ class Admin extends CI_Controller
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                             <h4><i class="icon fa fa-ban"></i> Xəta!</h4>
                             Səkil yükləndiyi zaman xəta baş verdi </div>');
-                redirect('admin/video'); 
+                redirect('admin/video');
           }
 
                $add_date      = html_escape($this->input->post('add_date'));
@@ -2431,11 +2429,11 @@ class Admin extends CI_Controller
                          Əlavə olunma tarixi düzgün formatda qeyd edilməyib. </div>');
                       redirect('admin/video');
                    }
-                   
+
                 } else {
                    $add_date_ = date("Y-m-d H:i:s");
                 }
-       
+
 
         $data = array(
             'v_title_az'  => html_escape($this->input->post('title_az')),
@@ -2482,7 +2480,7 @@ class Admin extends CI_Controller
         $video = $this->admin_model->get_video_id($id);
         $fileurl = './' . $video['v_cover'];
         if (file_exists($fileurl)) {
-             unlink($fileurl);  
+             unlink($fileurl);
         }
         $this->admin_model->delete_video($id);
         $this->session->set_flashdata('update_datatable', '<div class="alert alert-success text-center alert-dismissible">
@@ -2531,11 +2529,11 @@ class Admin extends CI_Controller
                         <h4><i class="icon fa fa-check"></i> Tarix formatı düzgün deyil!</h4></div>');
                 redirect('admin/update_video/'.$id);
             }
-                       
+
         } else {
              $add_date_ = date("Y-m-d H:i:s");
         }
-        
+
         if (isset($_FILES['file']['tmp_name']) && is_uploaded_file($_FILES['file']['tmp_name'])) {
            $cover = $this->admin_model->upload_image('file','assets/front/images/video','800');
            if (!$cover){
@@ -2570,15 +2568,15 @@ class Admin extends CI_Controller
                         <h4><i class="icon fa fa-check"></i> Yeniləndi!</h4>
                         Video uğurla yeniləndi. </div>');
         redirect('admin/update_video/'.$id);
-           
+
         } else {
            $this->session->set_flashdata('update_datatable', '<div class="alert alert-success text-center alert-dismissible">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                         <h4><i class="icon fa fa-check"></i> Tapılmadı!</h4>
                         Məlumatlar Tapılmadı. </div>');
            redirect('admin/video');
-        }           
-        
+        }
+
        }else{
         echo "Token error";
         exit();
@@ -2586,7 +2584,7 @@ class Admin extends CI_Controller
     }
 
    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
+
     /*...............................crowdfounding..............................*/
     /*...............................cf_categories..............................*/
     public function cfcategories()
@@ -2734,7 +2732,7 @@ class Admin extends CI_Controller
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                         <h4><i class="icon fa fa-ban"></i> Xəta!</h4>
                         Səkil yükləndiyi zaman xəta baş verdi </div>');
-            redirect('admin/addcfproject'); 
+            redirect('admin/addcfproject');
           }
         else
         {
@@ -2743,7 +2741,7 @@ class Admin extends CI_Controller
                     'image_library'   => 'gd2',
                     'source_image'    =>  $image_data['full_path'],
                     'maintain_ratio'  =>  TRUE,
-                    'quality'         => '95%', 
+                    'quality'         => '95%',
                     'width'           =>  688,
                     'height'          =>  459,
             );
@@ -2752,7 +2750,7 @@ class Admin extends CI_Controller
             $this->image_lib->resize();
       }
   }
-        
+
         $project = array(
             'price' => html_escape($this->input->post('price')),
             'image' => $new_image_name,
@@ -2834,7 +2832,7 @@ class Admin extends CI_Controller
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                         <h4><i class="icon fa fa-ban"></i> Xəta!</h4>
                         Səkil yükləndiyi zaman xəta baş verdi </div>');
-            redirect('admin/addcfproject'); 
+            redirect('admin/addcfproject');
           }
         else
         {
@@ -2843,7 +2841,7 @@ class Admin extends CI_Controller
                     'image_library'   => 'gd2',
                     'source_image'    =>  $image_data['full_path'],
                     'maintain_ratio'  =>  TRUE,
-                    'quality'         => '95%', 
+                    'quality'         => '95%',
                     'width'           =>  688,
                     'height'          =>  459,
             );
@@ -2969,5 +2967,59 @@ class Admin extends CI_Controller
     }
     }
 
-}         
+
+    /*................................strategic_plan.......................................*/
+    public function strategic_plan()
+    {
+        $this->safety('/strategic_plan');
+        $data['details'] = $this->admin_model->get_strategic_plan();
+        $this->load->view('back/strategic_plan/home', $data);
+    }
+
+    public function edit_strategic_plan()
+    {
+        $this->safety('/edit_strategic_plan');
+        $data['details'] = $this->admin_model->get_strategic_plan();
+        $this->load->view('back/strategic_plan/edit/home', $data);
+    }
+
+    public function update_strategic_plan()
+    {
+        $this->safety('/update_strategic_plan');
+        $token=html_escape($this->input->post('token'));
+        if ($token && $token!='' && checkToken($token)) {
+            $data['title_az'] = $this->input->post('title_az');
+            $data['title_en'] = $this->input->post('title_en');
+            $data['title_ru'] = $this->input->post('title_ru');
+
+            $data['description_az'] = $this->input->post('description_az');
+            $data['description_en'] = $this->input->post('description_en');
+            $data['description_ru'] = $this->input->post('description_ru');
+
+            $data['update_date'] = date('Y-m-d H:i:s');
+
+            $this->admin_model->update_strategic_plan($data);
+            $this->session->set_flashdata('update_datatable', '<div class="alert alert-success text-center alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h4><i class="icon fa fa-check"></i> Dəyişdirildi!</h4>
+                        Redaktə əməliyyatı uğurla icra olundu. </div>');
+            redirect('admin/strategic_plan');
+        }else{
+            echo "error";
+        }
+    }
+
+    public function strategic_plan_set()
+    {
+        $this->safety('/strategic_plan_set');
+        $token=html_escape($this->input->get('token'));
+        if ($token && $token!='' && checkToken($token)) {
+            $id = html_escape($this->input->post('id'));
+            $status = ($this->input->post('status') == 'true') ? 1 : 0;
+            $this->db->where('id', $id)->update('strategic_plan', array('status' => $status));
+        }else{
+            echo "error";
+        }
+    }
+}
 

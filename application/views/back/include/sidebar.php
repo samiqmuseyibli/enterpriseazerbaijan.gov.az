@@ -87,6 +87,7 @@
 					<li><a href="<?php echo base_url('admin/updateservices'); ?>"><i class="fa fa-circle-o"></i>Xidmətlər</a></li>
 					<li><a href="<?php echo base_url('admin/updatetermsofuse'); ?>"><i class="fa fa-circle-o"></i>İstifadə qaydaları</a></li>
 					<li><a href="<?php echo base_url('admin/about_content'); ?>"><i class="fa fa-circle-o"></i>Haqqimizda</a></li>
+					<li><a href="<?php echo base_url('admin/strategic_plan'); ?>"><i class="fa fa-circle-o"></i>Strateji Plan</a></li>
 					<li><a href="<?php echo base_url('admin/partners'); ?>"><i class="fa fa-circle-o"></i>Tərəfdaşlarımız</a></li>
 					<li><a href="<?php echo base_url('admin/sliders'); ?>"><i class="fa fa-circle-o"></i>Sliderlər</a></li>
 				</ul>

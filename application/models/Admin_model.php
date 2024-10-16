@@ -909,6 +909,24 @@ class Admin_model extends CI_Model
         $config['width'] = $width;      
         $this->load->library('image_lib', $config);    
         $this->image_lib->resize();    
-    }     
+    }
+
+    /*................................ strategic-plan .......................................*/
+
+    function get_strategic_plan()
+    {
+        $this->db->select('*');
+        $this->db->from('strategic_plan');
+        if ($query = $this->db->get()) {
+            return $query->row_array();
+        } else {
+            return false;
+        }
+    }
+
+    function update_strategic_plan($data)
+    {
+        $this->db->update('strategic_plan', $data);
+    }
 	
 }
