@@ -219,7 +219,7 @@ class Home extends CI_Controller
     public function videos()
     {
 
-        $page_data['rows'] = $this->db->order_by('v_createdAt','asc')->where('v_status','1')->get('video')->result_array();
+        $page_data['rows'] = $this->db->order_by('v_createdAt','desc')->where('v_status','1')->get('video')->result_array();
         $page_data['title'] = translate('videos');
         $page_data['page_name'] = 'videos';
         $this->load->view('index', $page_data);
