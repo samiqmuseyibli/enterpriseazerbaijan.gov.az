@@ -326,6 +326,7 @@
 										<li class="dropdown"><a href="#" class="dropdown-toggle <?php if($this->uri->segment(1)==='about' OR $this->uri->segment(1)==='contact'){echo 'active';}?>" title="<?php echo translate('about');?>"><?php echo translate('about');?><i class="fa fa-sort-desc"></i></a>
 											<ul class="dropdown-menu" role="menu">
 		                                        <li><a href="<?php echo base_url(); ?>about" class="dropdown-toggle" title="<?php echo translate('portal_profile');?>"><?php echo translate('portal_profile');?></a></li>
+		                                        <li><a href="<?php echo base_url(); ?>strategic-plan" class="dropdown-toggle" title="<?php echo translate('strategic-plan');?>"><?php echo translate('strategic-plan');?></a></li>
 		                                        <li><a href="<?php echo base_url(); ?>contact" class="dropdown-toggle" title="<?php echo translate('contact');?>"><?php echo translate('contact');?></a></li>
 											</ul>
 										</li>
