@@ -33,7 +33,7 @@
 						<li><a href="https://www.dth.az" target="_blank"><i class="fa fa-angle-right"></i> www.dth.az</a></li>
 						<li><a href="http://www.economy.gov.az" target="_blank"><i class="fa fa-angle-right"></i> www.economy.gov.az</a></li>
 						<li><a href="http://www.azpromo.az" target="_blank"><i class="fa fa-angle-right"></i> www.azpromo.az</a></li>
-						<li><a href="http://www.anfes.gov.az" target="_blank"><i class="fa fa-angle-right"></i> www.anfes.gov.az</a></li>
+						<li><a href="http://www.edf.gov.az" target="_blank"><i class="fa fa-angle-right"></i> www.edf.gov.az</a></li>
 					</ul>
 				</div>
 			</div>
