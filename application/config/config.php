@@ -470,7 +470,7 @@ $config['csrf_token_name'] = 'csrf_token';
 $config['csrf_cookie_name'] = 'csrf_cookie_name';
 $config['csrf_expire'] = 7200;
 $config['csrf_regenerate'] = TRUE;
-$config['csrf_exclude_uris'] = array('admin/usersset','admin/project_categoryset','admin/sectorset','admin/newsset','admin/partnersset','admin/sliderset','admin/get_subcategory','admin/get_subcategory_name/[0-9]+','admin/get_category_name','admin/update_subcategory','admin/companyset','admin/setcfcategory','admin/uploading_news_image','admin/setcfproject','admin/geoprojectsset','admin/videoset');
+$config['csrf_exclude_uris'] = array('admin/usersset','admin/project_categoryset','admin/sectorset','admin/newsset','admin/partnersset','admin/sliderset','admin/get_subcategory','admin/get_subcategory_name/[0-9]+','admin/get_category_name','admin/update_subcategory','admin/companyset','admin/setcfcategory','admin/uploading_news_image','admin/setcfproject','admin/geoprojectsset','admin/videoset','admin/strategic_plan_set');
 
 /*
 |--------------------------------------------------------------------------

@@ -54,6 +54,7 @@ $route['crowdfunding']                = 'competition/index';
 $route['crowdfunding/(:any)']         = 'competition/index/$1';
 $route['default_controller'] = 'home';
 $route['404_override'] = 'home/index';
+$route['strategic-plan'] = 'strategic_plan/index';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['video']                 = 'home/videos';
