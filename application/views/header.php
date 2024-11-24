@@ -334,10 +334,11 @@
                                         <li class="dropdown"><a href="#" class="dropdown-toggle <?php if($this->uri->segment(2)==='services' OR $this->uri->segment(1)==='cfprojects' OR $this->uri->segment(2)==='doingbusiness' ){echo 'active';}?>" title="<?php echo translate('our_services');?>"><?php echo translate('our_services');?><i class="fa fa-sort-desc"></i></a>
 											<ul class="dropdown-menu" role="menu">
 												<li><a target="_blank" href="https://startupschool.az/" class="dropdown-toggle" title="<?php echo translate('startup_school');?>"><?php echo translate('startup_school');?></a></li>
-												<li><a href="<?php echo base_url();?>home/doingbusiness/8-biznese-baslama" class="dropdown-toggle" title="<?php echo translate('Why_Azerbaijan');?>"><?php echo translate('Why_Azerbaijan');?></a></li>
+                                                <li class="dropdown"><a href="<?php echo base_url();?>home/documents" class="dropdown-toggle <?php if($this->uri->segment(2)==='documents'){echo 'active';}?>" title="<?php echo translate('doc_header');?>"><?php echo translate('doc_header');?></a></li>
+                                                <li><a href="<?php echo base_url();?>home/doingbusiness/8-biznese-baslama" class="dropdown-toggle" title="<?php echo translate('Why_Azerbaijan');?>"><?php echo translate('Why_Azerbaijan');?></a></li>
 											</ul>
 										</li>
-										<li class="dropdown"><a href="<?php echo base_url();?>home/documents" class="dropdown-toggle <?php if($this->uri->segment(2)==='documents'){echo 'active';}?>" title="<?php echo translate('doc_header');?>"><?php echo translate('doc_header');?></a></li>
+										<li class="dropdown"><a href="<?php echo base_url();?>project/all" class="dropdown-toggle <?php if($this->uri->segment(2)==='projects'){echo 'active';}?>" title="<?php echo translate('projects');?>"><?php echo translate('projects');?></a></li>
 
                                         <li class="dropdown"><a href="#" class="dropdown-toggle <?php if($this->uri->segment(2)==='news' OR $this->uri->segment(1)==='video'){echo 'active';}?>" title="<?php echo translate('media_new');?>"><?php echo translate('media_new');?><i class="fa fa-sort-desc"></i></a>
 											<ul class="dropdown-menu" role="menu">
