@@ -80,6 +80,7 @@ $route['^(az|en|ru)$'] = "home/index";
 
 $route['default_controller'] = 'home';
 $route['404_override'] = 'home/index';
+$route['strategic-plan'] = 'strategic_plan/index';
 $route['translate_uri_dashes'] = FALSE;
 
 
