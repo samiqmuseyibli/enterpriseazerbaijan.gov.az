@@ -343,10 +343,7 @@ class Home extends CI_Controller
 
         $page_data['categories'] = $this->db->where('vc_status','1')->get('video_category')->result_array();
 
-<<<<<<< HEAD
-=======
         $page_data['rows'] = $this->db->order_by('v_createdAt','desc')->where('v_status','1')->get('video')->result_array();
->>>>>>> 4cc5aa09946e2d7d90543c375f38a44cdd79c424
         $page_data['title'] = translate('videos');
         $page_data['page_name'] = 'videos';
         $page_data["links"] = $this->pagination->create_links();
