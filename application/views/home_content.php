@@ -657,7 +657,7 @@
     }
   }
 </style>
-
+<?php $l = curLang() ?>
 <div class="clearfix"></div>
 <div class="feature_section7 feature_section_pdd">
   <div class="container">
@@ -761,7 +761,7 @@
     <div class="linebg_10"></div>
     <div class="one_fifth_less">
       <?php $doing_business = get_doing_business_detail('8'); ?>
-      <a href="<?php echo base_url('home/doingbusiness/') . $doing_business['id'] . '-' . $doing_business['top']; ?>">
+      <a href="<?php echo base_url($l . '/home/doingbusiness/') . $doing_business['id'] . '-' . $doing_business['top']; ?>">
         <div class="box">
           <i class="fa  fa-briefcase "></i>
           <h4 class="white"><?php echo $doing_business['title_' . $l . '']; ?></h4>
@@ -770,7 +770,7 @@
     </div><!-- end -->
     <div class="one_fifth_less">
       <?php $doing_business = get_doing_business_detail('9'); ?>
-      <a href="<?php echo base_url('home/doingbusiness/') . $doing_business['id'] . '-' . $doing_business['top']; ?>">
+      <a href="<?php echo base_url($l . '/home/doingbusiness/') . $doing_business['id'] . '-' . $doing_business['top']; ?>">
         <div class="box two">
           <i class="fa fa-building"></i>
           <h4 class="white"><?php echo $doing_business['title_' . $l . '']; ?></h4>
@@ -780,7 +780,7 @@
     <!-- end -->
     <div class="one_fifth_less">
       <?php $doing_business = get_doing_business_detail('10'); ?>
-      <a href="<?php echo base_url('home/doingbusiness/') . $doing_business['id'] . '-' . $doing_business['top']; ?>">
+      <a href="<?php echo base_url($l . '/home/doingbusiness/') . $doing_business['id'] . '-' . $doing_business['top']; ?>">
         <div class="box three">
           <i class="fa fa-lightbulb-o"></i>
           <h4 class="white"><?php echo $doing_business['title_' . $l . '']; ?></h4>
@@ -790,7 +790,7 @@
     <!-- end -->
     <div class="one_fifth_less">
       <?php $doing_business = get_doing_business_detail('11'); ?>
-      <a href="<?php echo base_url('home/doingbusiness/') . $doing_business['id'] . '-' . $doing_business['top']; ?>">
+      <a href="<?php echo base_url($l . '/home/doingbusiness/') . $doing_business['id'] . '-' . $doing_business['top']; ?>">
         <div class="box four">
           <i class="fa fa-globe"></i>
           <h4 class="white"><?php echo $doing_business['title_' . $l . '']; ?></h4>
@@ -800,7 +800,7 @@
     <!-- end -->
     <div class="one_fifth_less last">
       <?php $doing_business = get_doing_business_detail('12'); ?>
-      <a href="<?php echo base_url('home/doingbusiness/') . $doing_business['id'] . '-' . $doing_business['top']; ?>">
+      <a href="<?php echo base_url($l . '/home/doingbusiness/') . $doing_business['id'] . '-' . $doing_business['top']; ?>">
         <div class="box five">
           <i class="fa fa-dollar"></i>
           <h4 class="white"><?php echo $doing_business['title_' . $l . '']; ?></h4>
@@ -811,7 +811,7 @@
     <div class="clearfix margin_bottom2"></div>
     <div class="one_fifth_less">
       <?php $doing_business = get_doing_business_detail('13'); ?>
-      <a href="<?php echo base_url('home/doingbusiness/') . $doing_business['id'] . '-' . $doing_business['top']; ?>">
+      <a href="<?php echo base_url($l . '/home/doingbusiness/') . $doing_business['id'] . '-' . $doing_business['top']; ?>">
         <div class="box six">
           <i class="fa fa-heartbeat"></i>
           <h4 class="white"><?php echo $doing_business['title_' . $l . '']; ?></h4>
@@ -821,7 +821,7 @@
     <!-- end -->
     <div class="one_fifth_less">
       <?php $doing_business = get_doing_business_detail('14'); ?>
-      <a href="<?php echo base_url('home/doingbusiness/') . $doing_business['id'] . '-' . $doing_business['top']; ?>">
+      <a href="<?php echo base_url($l . '/home/doingbusiness/') . $doing_business['id'] . '-' . $doing_business['top']; ?>">
         <div class="box seven">
           <i class="fa fa-money"></i>
           <h4 class="white"><?php echo $doing_business['title_' . $l . '']; ?></h4>
@@ -831,7 +831,7 @@
     <!-- end -->
     <div class="one_fifth_less">
       <?php $doing_business = get_doing_business_detail('15'); ?>
-      <a href="<?php echo base_url('home/doingbusiness/') . $doing_business['id'] . '-' . $doing_business['top']; ?>">
+      <a href="<?php echo base_url($l . '/home/doingbusiness/') . $doing_business['id'] . '-' . $doing_business['top']; ?>">
         <div class="box eight">
           <i class="fa fa-files-o"></i>
           <h4 class="white"><?php echo $doing_business['title_' . $l . '']; ?></h4>
@@ -841,7 +841,7 @@
     <!-- end -->
     <div class="one_fifth_less">
       <?php $doing_business = get_doing_business_detail('16'); ?>
-      <a href="<?php echo base_url('home/doingbusiness/') . $doing_business['id'] . '-' . $doing_business['top']; ?>">
+      <a href="<?php echo base_url($l . '/home/doingbusiness/') . $doing_business['id'] . '-' . $doing_business['top']; ?>">
         <div class="box nine">
           <i class="fa fa-balance-scale"></i>
           <h4 class="white"><?php echo $doing_business['title_' . $l . '']; ?></h4>
@@ -851,7 +851,7 @@
     <!-- end -->
     <div class="one_fifth_less last">
       <?php $doing_business = get_doing_business_detail('17'); ?>
-      <a href="<?php echo base_url('home/doingbusiness/') . $doing_business['id'] . '-' . $doing_business['top']; ?>">
+      <a href="<?php echo base_url($l . '/home/doingbusiness/') . $doing_business['id'] . '-' . $doing_business['top']; ?>">
         <div class="box ten">
           <i class="fa  fa-exclamation-triangle "></i>
           <h4 class="white"><?php echo $doing_business['title_' . $l . '']; ?></h4>

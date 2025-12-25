@@ -3,3 +3,4 @@ system/
 cache/
 ci_sessions/
 vendor
+.DS_Store
